@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>绚丽的小球</title>
-	<style>
+	<style  text="text/css">
 		body{
 			margin: 100px;
 		}
@@ -14,14 +14,15 @@
 </head>
 <body>
 	<canvas id="canvas">当前浏览器不支持该版本！</canvas>
-	<script src="http://www.css88.com/doc/underscore/underscore.js"></script>
-	<script>
+	<script text="text/javascript" src="http://www.css88.com/doc/underscore/underscore.js"></script>
+	<script text="text/javascript">
 		//获取当前画布
 		const canvas = document.getElementById('canvas');
 		const ctx = canvas.getContext('2d');	
 		canvas.width = 1000;
 		canvas.height = 600;
 		canvas.style.background = '#000'
+
 		//小球类
 		class Ball{
 			//构造器
@@ -31,6 +32,7 @@
 				this.color = color;
 				this.r = 40;
 			}
+
 			//绘制小球
 			render(){
 				ctx.save();
@@ -41,6 +43,7 @@
 				ctx.restore();
 			}
 		}
+
 		//3.会移动的小球类
 		class MoveBall extends Ball{
 			constructor(x, y, color){
@@ -59,13 +62,16 @@
 				}
 			}
 		}
+
 		//4.实例化小球
 		let ballArr = [];
 		let colorArr = ['red', 'green', 'bule', 'orange', 'yellow', 'pink', 'white', 'purple']
+
 		//5.监听鼠标移动
 		canvas.addEventListener('mousemove', function(e){
 			ballArr.push(new MoveBall(e.offsetX, e.offsetY, colorArr[_.random(0, colorArr.length-1)]))
 		})
+
 		//6开启定时器
 		setInterval(function(){
 			ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -75,6 +81,7 @@
 				ballArr[i].upDate()
 			}
 		}, 50)
+
 	</script>
 </body>
 </html>
